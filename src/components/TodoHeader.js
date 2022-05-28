@@ -9,16 +9,24 @@ const TodoHeaderStyle = styled.div`
     border-bottom: 1px solid;
   }
 
-  span {
+  .date {
     margin-right: 10px;
     font-size: 45px;
     font-weight: bold;
   }
 
-  .month-day {
+  .month-year {
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  .day {
+    font-size: 15px;
+    letter-spacing: 0.1em;
+    position: absolute;
+    top: 9%;
+    left: 80%;
   }
 `;
 
@@ -26,11 +34,12 @@ const TodoHeader = () => {
   return (
     <TodoHeaderStyle>
       <div className="header-container">
-        <span>7</span>
-        <div className="month-day">
+        <span className="date">7</span>
+        <div className="month-year">
           <div>MAY</div>
-          <div>FRIDAY</div>
+          <div>2022</div>
         </div>
+        <span className="day">FRIDAY</span>
       </div>
     </TodoHeaderStyle>
   );

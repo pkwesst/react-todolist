@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import TodoLayout from "./components/TodoLayout";
 import TodoHeader from "./components/TodoHeader";
 import TodoList from "./components/TodoList";
+import TodoCreate from "./components/TodoCreate";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -21,6 +22,7 @@ function App() {
       <TodoLayout>
         <TodoHeader />
         <TodoList />
+        <TodoCreate />
       </TodoLayout>
     </div>
   );
