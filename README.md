@@ -8,6 +8,7 @@
 
 - React
 - Styled Components
+- Context API
 
 ---
 
