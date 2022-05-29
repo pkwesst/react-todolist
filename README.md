@@ -17,6 +17,8 @@
   - UI
 - [트러블 슈팅](#트러블슈팅)
 
+---
+
 ## 구현
 
 <img style="width:100vw; display:block; margin:0 auto" alt="todo" src="https://user-images.githubusercontent.com/90893579/170867519-1763d6e9-d26b-43e1-b675-933eef33f206.png">
@@ -52,6 +54,8 @@
   - props 받아와 스타일 적용
 - transform의 rotate 이용
   - +버튼이 x버튼으로 전환
+
+---
 
 ## 트러블 슈팅
 
