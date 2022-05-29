@@ -1,5 +1,7 @@
+import React, { useContext } from "react";
 import styled, { css } from "styled-components";
 import { MdDone, MdDelete } from "react-icons/md";
+import { TodoDispatchContext } from "../TodoContext";
 
 const RemoveStyle = styled.div`
   display: none;
@@ -14,7 +16,7 @@ const RemoveStyle = styled.div`
 const TodoItemStyle = styled.div`
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 20px;
   &:hover {
     ${RemoveStyle} {
       display: initial;
@@ -42,6 +44,7 @@ const Text = styled.div`
   flex: 1;
   padding: 5px 25px;
   font-size: 16px;
+  font-family: "Noto Sans KR", sans-serif;
   ${(props) =>
     props.done &&
     css`
@@ -50,13 +53,19 @@ const Text = styled.div`
     `}
 `;
 
-const TodoItem = ({ id, done, text, first }) => {
+const TodoItem = ({ id, done, content }) => {
+  const dispatch = useContext(TodoDispatchContext);
+  const onToggle = () => dispatch({ type: "TOGGLE", id });
+  const onRemove = () => dispatch({ type: "REMOVE", id });
+
   return (
     <div>
       <TodoItemStyle>
-        <CheckSquare done={done}>{done && <MdDone />}</CheckSquare>
-        <Text done={done}>{text}</Text>
-        <RemoveStyle>
+        <CheckSquare done={done} onClick={onToggle}>
+          {done && <MdDone />}
+        </CheckSquare>
+        <Text done={done}>{content}</Text>
+        <RemoveStyle onClick={onRemove}>
           <MdDelete />
         </RemoveStyle>
       </TodoItemStyle>
@@ -64,4 +73,4 @@ const TodoItem = ({ id, done, text, first }) => {
   );
 };
 
-export default TodoItem;
+export default React.memo(TodoItem);

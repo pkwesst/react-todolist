@@ -10,36 +10,57 @@ const TodoHeaderStyle = styled.div`
   }
 
   .date {
-    margin-right: 10px;
+    margin-right: 15px;
     font-size: 45px;
     font-weight: bold;
+    letter-spacing: 0.05em;
   }
 
   .month-year {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    letter-spacing: 0.05em;
   }
 
   .day {
     font-size: 15px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.3em;
     position: absolute;
-    top: 9%;
-    left: 80%;
+    top: 7%;
+    left: 75%;
   }
 `;
 
 const TodoHeader = () => {
+  const today = new Date();
+  const year = today.toLocaleDateString("en-US", {
+    year: "numeric",
+  });
+
+  const month = today.toLocaleDateString("en-US", {
+    month: "long",
+  });
+
+  const date = today.toLocaleDateString("en-US", {
+    day: "numeric",
+  });
+
+  const dayName = today
+    .toLocaleDateString("en-US", {
+      weekday: "long",
+    })
+    .toUpperCase();
+
   return (
     <TodoHeaderStyle>
       <div className="header-container">
-        <span className="date">7</span>
+        <span className="date">{date}</span>
         <div className="month-year">
-          <div>MAY</div>
-          <div>2022</div>
+          <div>{month}</div>
+          <div>{year}</div>
         </div>
-        <span className="day">FRIDAY</span>
+        <span className="day">{dayName}</span>
       </div>
     </TodoHeaderStyle>
   );

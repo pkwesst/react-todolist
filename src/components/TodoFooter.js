@@ -1,13 +1,18 @@
 import styled, { css } from "styled-components";
 import { MdAdd } from "react-icons/md";
-import { useState } from "react";
+import React, { useContext, useState } from "react";
+import {
+  TodoDispatchContext,
+  TodoNextIdContext,
+  TodoStateContext,
+} from "../TodoContext";
 
-const TodoFooter = styled.div`
+const TodoFooterStyle = styled.div`
   display: flex;
   justify-content: space-between;
   align-content: center;
   padding: 30px;
-  height: 120px;
+  height: 110px;
   border-top: 1px solid;
   position: relative;
   z-index: 0;
@@ -15,7 +20,7 @@ const TodoFooter = styled.div`
   .tasks {
     font-size: 15px;
     letter-spacing: 0.2em;
-    transform: translate(10%, 50%);
+    transform: translate(25%, 50%);
   }
 `;
 
@@ -68,7 +73,7 @@ const InputStyle = styled.div`
 const InputForm = styled.form`
   background: #f8f9fa;
   padding-left: 32px;
-  padding-top: 34px;
+  padding-top: 41px;
   padding-right: 32px;
   padding-bottom: 28px;
   border-bottom-left-radius: 16px;
@@ -84,33 +89,59 @@ const Input = styled.input`
   outline: none;
   font-size: 16px;
   box-sizing: border-box;
-`;
+s`;
 
-const TodoCreate = () => {
+const TodoFooter = () => {
   const [button, setButton] = useState(false);
+  const [content, setContent] = useState("");
+
+  const todos = useContext(TodoStateContext);
+  const undoneTasks = todos.filter((it) => !it.done);
+
+  const dispatch = useContext(TodoDispatchContext);
+  const nextId = useContext(TodoNextIdContext);
+
+  const onToggle = () => setButton(!button);
+  const onCreate = (it) => setContent(it.target.value);
+  const onSubmit = (it) => {
+    it.preventDefault();
+    dispatch({
+      type: "CREATE",
+      todo: {
+        id: nextId.current,
+        content: content,
+        done: false,
+      },
+    });
+    setContent("");
+    setButton(false);
+    nextId.current += 1;
+  };
+
+  console.log(content);
 
   return (
-    <TodoFooter>
+    <TodoFooterStyle>
       <div className="TodoFooter">
         {button && (
           <InputStyle>
-            <InputForm>
-              <Input autoFocus placeholder="Enter your todo!" />
+            <InputForm onSubmit={onSubmit}>
+              <Input
+                placeholder="Enter your todo!"
+                autoFocus
+                onChange={onCreate}
+                content={content}
+              />
             </InputForm>
           </InputStyle>
         )}
-        <AddButton
-          onClick={() => {
-            setButton(!button);
-          }}
-          button={button}
-        >
+        <AddButton onClick={onToggle} button={button}>
           <MdAdd />
         </AddButton>
-        <div className="tasks">5 TASKS</div>
+        <div className="tasks">{undoneTasks.length} TASKS</div>
       </div>
-    </TodoFooter>
+    </TodoFooterStyle>
   );
 };
 
-export default TodoCreate;
+export default React.memo(TodoFooter);

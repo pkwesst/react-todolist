@@ -2,7 +2,8 @@ import { createGlobalStyle } from "styled-components";
 import TodoLayout from "./components/TodoLayout";
 import TodoHeader from "./components/TodoHeader";
 import TodoList from "./components/TodoList";
-import TodoCreate from "./components/TodoCreate";
+import TodoFooter from "./components/TodoFooter";
+import TodoContext from "./TodoContext";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -18,12 +19,14 @@ body {
 function App() {
   return (
     <div className="App">
-      <GlobalStyle />
-      <TodoLayout>
-        <TodoHeader />
-        <TodoList />
-        <TodoCreate />
-      </TodoLayout>
+      <TodoContext>
+        <GlobalStyle />
+        <TodoLayout>
+          <TodoHeader />
+          <TodoList />
+          <TodoFooter />
+        </TodoLayout>
+      </TodoContext>
     </div>
   );
 }
