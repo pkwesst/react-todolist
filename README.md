@@ -19,8 +19,8 @@
 
 ## 구현
 
-<img style="width:500px; display:block; margin:0 auto" alt="todo" src="https://user-images.githubusercontent.com/90893579/170867519-1763d6e9-d26b-43e1-b675-933eef33f206.png">
-<img style="width:500px; display:block; margin:0 auto" alt="todo-input" src="https://user-images.githubusercontent.com/90893579/170867418-634a6f24-9fa7-47b7-8a3d-716410f92603.png">
+<img style="width:100vw; display:block; margin:0 auto" alt="todo" src="https://user-images.githubusercontent.com/90893579/170867519-1763d6e9-d26b-43e1-b675-933eef33f206.png">
+<img style="width:100vw; display:block; margin:0 auto" alt="todo-input" src="https://user-images.githubusercontent.com/90893579/170867418-634a6f24-9fa7-47b7-8a3d-716410f92603.png">
 
 ### 현재 날짜
 
