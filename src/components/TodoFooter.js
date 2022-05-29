@@ -49,8 +49,8 @@ const AddButton = styled.button`
   }
 
   trainsition: 0.2s all ease-in;
-  ${(props) =>
-    props.button &&
+  ${(it) =>
+    it.button &&
     css`
       background: #ff6b85;
       &:hover {
@@ -89,7 +89,7 @@ const Input = styled.input`
   outline: none;
   font-size: 16px;
   box-sizing: border-box;
-s`;
+`;
 
 const TodoFooter = () => {
   const [button, setButton] = useState(false);

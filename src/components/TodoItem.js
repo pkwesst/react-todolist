@@ -32,8 +32,8 @@ const CheckSquare = styled.div`
   height: 23px;
   border: 1px solid;
   border-radius: 5px;
-  ${(props) =>
-    props.done &&
+  ${(it) =>
+    it.done &&
     css`
       background-color: #6a86ff;
       color: white;
@@ -45,8 +45,8 @@ const Text = styled.div`
   padding: 5px 25px;
   font-size: 16px;
   font-family: "Noto Sans KR", sans-serif;
-  ${(props) =>
-    props.done &&
+  ${(it) =>
+    it.done &&
     css`
       color: #d1d9ff;
       text-decoration: line-through;
@@ -65,8 +65,8 @@ const TodoItem = ({ id, done, content }) => {
           {done && <MdDone />}
         </CheckSquare>
         <Text done={done}>{content}</Text>
-        <RemoveStyle onClick={onRemove}>
-          <MdDelete />
+        <RemoveStyle>
+          <MdDelete onClick={onRemove} />
         </RemoveStyle>
       </TodoItemStyle>
     </div>
